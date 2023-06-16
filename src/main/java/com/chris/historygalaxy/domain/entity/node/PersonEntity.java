@@ -25,4 +25,13 @@ public class PersonEntity {
 
     // 表字，sample: 玄德
     private String secondaryName;
+
+    // 出生年，公历（负数为公元前）
+    private Integer bornYear;
+
+    // 死亡年，公历（负数为公元前）
+    private Integer deadYear;
+
+    // 寿数
+    private Integer age;
 }

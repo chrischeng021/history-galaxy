@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 public class PersonService {
     @Autowired
@@ -13,5 +16,9 @@ public class PersonService {
 
     public Mono<PersonEntity> createNewPerson(PersonEntity personEntity) {
         return personRepository.save(personEntity);
+    }
+
+    public Mono<List<PersonEntity>> findPersonByFullName(String fullName) {
+        return personRepository.findAll().filter(personEntity -> personEntity.getFullName().equals(fullName)).collect(Collectors.toList());
     }
 }
